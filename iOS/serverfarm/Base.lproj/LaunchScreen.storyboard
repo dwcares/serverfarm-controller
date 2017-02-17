@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-pattern" translatesAutoresizingMaskIntoConstraints="NO" id="r8f-yc-TlQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-banner-flat" translatesAutoresizingMaskIntoConstraints="NO" id="mqi-fl-Krn">
+                                <rect key="frame" x="0.0" y="547" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="Mmb-3V-d2K"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-mark" translatesAutoresizingMaskIntoConstraints="NO" id="ByD-YP-bKH">
+                                <rect key="frame" x="21" y="56" width="333" height="333"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ByD-YP-bKH" secondAttribute="height" multiplier="1:1" id="E0M-YY-JDp"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="yEb-6t-QKL"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ByD-YP-bKH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="5" id="0Gw-VA-fBA"/>
+                            <constraint firstItem="ByD-YP-bKH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="5" id="89Y-qH-n4o"/>
+                            <constraint firstItem="r8f-yc-TlQ" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="9Q6-op-aQe"/>
+                            <constraint firstItem="r8f-yc-TlQ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Ddg-7z-C8h"/>
+                            <constraint firstItem="mqi-fl-Krn" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="T1k-Kf-J3e"/>
+                            <constraint firstItem="mqi-fl-Krn" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="2:7" priority="750" id="b6c-br-t66"/>
+                            <constraint firstItem="r8f-yc-TlQ" firstAttribute="bottom" secondItem="mqi-fl-Krn" secondAttribute="bottom" id="hGN-me-6wW"/>
+                            <constraint firstItem="mqi-fl-Krn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kng-iI-8QT"/>
+                            <constraint firstItem="ByD-YP-bKH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="l33-sa-1ci"/>
+                            <constraint firstItem="r8f-yc-TlQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mCx-R5-8FR"/>
+                            <constraint firstItem="ByD-YP-bKH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="2:3" id="om0-x2-ry2"/>
+                            <constraint firstItem="r8f-yc-TlQ" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="uQN-SL-bHD"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.399999999999999" y="373.76311844077964"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo-banner-flat" width="576" height="211"/>
+        <image name="logo-mark" width="576" height="576"/>
+        <image name="logo-pattern" width="576" height="576"/>
+    </resources>
+</document>
