@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Xantec</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=320">
+    <style type="text/css">   
+        #rx {
+           height: 80px;
+        }
+
+        button {
+          padding: 10px;
+          min-width: 40px;
+          min-height: 20px;
+        }
+    </style>
+    <script src="protocol.js"></script>
+    <script src="socket.io-1.2.0.js"></script>
+  </head>
+
+  <body>      
+    <div>
+        <input id="data" />
+        <button id="submit">Submit</button>
+        <textarea id='rx'></textarea>
+    </div>
+    <script>
+      var socket = io();
+
+      document.getElementById('submit').addEventListener('click', function(e) {
+        socket.emit('tx', data.value);
+      }) ;
+            
+      socket.on('rx', function (data) {
+        console.log("rx: "+ data);
+        rx.value = data;
+      });
+          
+    </script>
+  </body>
+</html>
