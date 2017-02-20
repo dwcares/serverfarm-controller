@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RoomViewController.swift
 //  serverfarm
 //
 //  Created by Washington Family on 2/9/17.
@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class ViewController: UIViewController {
+class RoomViewController: UIViewController {
     
     //MARK: Properties
     
@@ -28,29 +28,12 @@ class ViewController: UIViewController {
         print("StepperChange:  :\(sender.value)")
         let volume = Int(sender.value)
         
-        if (self.pageZone == ServerFarm.format.zone.mediaroom) {
+        ServerFarm.doCommand(zone: pageZone, sourceCmd: "\(ServerFarm.format.sourceCmd.volume)\(volume)", globalCmd: nil) {
+            (success: Bool) in
+            if (success) { self.updatePageStatusUI() }
             
-            if (sender.value == 0) {
-                print("down")
-                ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mvolumedown)  {
-                    _ in
-
-                }
-            } else {
-                print("up")
-                ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mvolumeup)  {
-                    _ in
-                }
-            }
-            sender.value = 1; // reset
-          
-        } else {
-            ServerFarm.doCommand(zone: pageZone, sourceCmd: "\(ServerFarm.format.sourceCmd.volume)\(volume)", globalCmd: nil) {
-                (success: Bool) in
-                if (success) { self.updatePageStatusUI() }
-                
-            }
         }
+
     }
     @IBAction func togglePowerAction(_ sender: UIButton) {
         print("Toggle power")
@@ -60,75 +43,37 @@ class ViewController: UIViewController {
                 self.updatePageStatusUI()
                 
             }
-        
         }
     }
     
     @IBAction func muteChanged(_ sender: UISwitch) {
- 
-        if (self.pageZone == ServerFarm.format.zone.mediaroom) {
-            ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mmute)  {
-                (success: Bool) in
-                if (success) { print("Muted Marantz") }
-                
-            }
-        }else {
-            ServerFarm.doCommand(zone: pageZone, sourceCmd: ServerFarm.format.sourceCmd.mute, globalCmd: nil)  {
-                (success: Bool) in
-                if (success) {
-                    self.updatePageStatusUI()
-                }
+        ServerFarm.doCommand(zone: pageZone, sourceCmd: ServerFarm.format.sourceCmd.mute, globalCmd: nil)  {
+            (success: Bool) in
+            if (success) {
+                self.updatePageStatusUI()
             }
         }
-        
     }
    
     @IBAction func indexChanged(_ sender : UISegmentedControl) {
 
         var command = ""
-        if (pageZone == ServerFarm.format.zone.mediaroom) {
-            switch sender.selectedSegmentIndex {
-            case 0:
-                command = ServerFarm.format.sourceCmd.bluray
-            case 1:
-                command = ServerFarm.format.sourceCmd.tv
-            case 2:
-                command = ServerFarm.format.sourceCmd.xbox
-            case 3:
-                command = ServerFarm.format.sourceCmd.sonos
-            default:
-                break;
-            }  //Switch
-            
-        } else {
-            switch sender.selectedSegmentIndex {
-            case 0:
-                command = ServerFarm.format.sourceCmd.tuner1
-            case 1:
-                command = ServerFarm.format.sourceCmd.sonos
-            case 2:
-                command = ServerFarm.format.sourceCmd.tv
-            default:
-                break;
-            }  //Switch
-        }
+        switch sender.selectedSegmentIndex {
+        case 0:
+            command = ServerFarm.format.sourceCmd.tuner1
+        case 1:
+            command = ServerFarm.format.sourceCmd.sonos
+        case 2:
+            command = ServerFarm.format.sourceCmd.tv
+        default:
+            break;
+        }  //Switch
 
         
         ServerFarm.doCommand(zone: pageZone, sourceCmd: command, globalCmd: nil)  {
             (success: Bool) in
             if (success) {
-                if (self.pageZone == ServerFarm.format.zone.mediaroom && sender.selectedSegmentIndex == 2) {
-                    ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.xbox)  {
-                        (success: Bool) in
-                        if (success) {
-                            self.updatePageStatusUI()
-                        }
-                    }
-
-                } else {
-                    self.updatePageStatusUI()
-
-                }
+                self.updatePageStatusUI()
                 
             }
             
@@ -234,39 +179,21 @@ class ViewController: UIViewController {
     
     func getSegementFromSource(source: Int) -> Int? {
         var segment: Int?
-        if (pageZone == ServerFarm.format.zone.mediaroom) {
-            switch source {
-            case ServerFarm.format.source.bluray:
-                segment = 0
-                break
-            case ServerFarm.format.source.tv:
-                segment = 1
-                break
-            case ServerFarm.format.source.xbox:
-                segment = 2
-                break
-            case ServerFarm.format.source.sonos:
-                segment = 3
-            default:
-                break;
-            }  //Switch
-            
-        } else {
-            switch source {
-            case ServerFarm.format.source.tuner1:
-                segment = 0
-                break
-            case ServerFarm.format.source.sonos:
-                segment = 1
-                break
-            case ServerFarm.format.source.tv:
-                segment = 2
-                break
-            default:
-                break;
-            }  //Switch
-        }
-        
+
+        switch source {
+        case ServerFarm.format.source.tuner1:
+            segment = 0
+            break
+        case ServerFarm.format.source.sonos:
+            segment = 1
+            break
+        case ServerFarm.format.source.tv:
+            segment = 2
+            break
+        default:
+            break;
+        }  //Switch
+    
         return segment
 
     }

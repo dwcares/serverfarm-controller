@@ -23,7 +23,7 @@
         <!--KitchenView-->
         <scene sceneID="qTY-c6-YgW">
             <objects>
-                <viewController storyboardIdentifier="kitchenView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0iB-RI-TUm" userLabel="KitchenView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="kitchenView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0iB-RI-TUm" userLabel="KitchenView" customClass="RoomViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7GN-gj-OXb"/>
                         <viewControllerLayoutGuide type="bottom" id="Rm1-kc-d0o"/>
@@ -154,7 +154,7 @@
         <!--FamilyRoomView-->
         <scene sceneID="43J-oO-VQE">
             <objects>
-                <viewController storyboardIdentifier="familyRoomView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uRR-WP-hPJ" userLabel="FamilyRoomView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="familyRoomView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uRR-WP-hPJ" userLabel="FamilyRoomView" customClass="RoomViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oN7-qy-l56"/>
                         <viewControllerLayoutGuide type="bottom" id="Rcu-Q8-iVC"/>
@@ -285,7 +285,7 @@
         <!--DiningRoomView-->
         <scene sceneID="ndY-Ny-pkU">
             <objects>
-                <viewController storyboardIdentifier="diningRoomView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J8K-Mp-wck" userLabel="DiningRoomView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="diningRoomView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J8K-Mp-wck" userLabel="DiningRoomView" customClass="RoomViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E5u-dn-Rmb"/>
                         <viewControllerLayoutGuide type="bottom" id="8a5-r9-JBh"/>
@@ -416,7 +416,7 @@
         <!--UpstairsBathView-->
         <scene sceneID="7b0-0g-92L">
             <objects>
-                <viewController storyboardIdentifier="upstairsBathView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q90-CV-ef7" userLabel="UpstairsBathView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="upstairsBathView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q90-CV-ef7" userLabel="UpstairsBathView" customClass="RoomViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dT9-G1-UH2"/>
                         <viewControllerLayoutGuide type="bottom" id="RMF-uh-wVe"/>
@@ -547,7 +547,7 @@
         <!--GuestBathView-->
         <scene sceneID="n4a-0U-SGj">
             <objects>
-                <viewController storyboardIdentifier="guestBathView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FCX-cw-4J4" userLabel="GuestBathView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="guestBathView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FCX-cw-4J4" userLabel="GuestBathView" customClass="RoomViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SgP-4e-sr8"/>
                         <viewControllerLayoutGuide type="bottom" id="JkH-oi-Rz1"/>
@@ -678,7 +678,7 @@
         <!--BasementView-->
         <scene sceneID="pWi-uP-ngr">
             <objects>
-                <viewController storyboardIdentifier="basementView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="21M-zf-DxC" userLabel="BasementView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="basementView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="21M-zf-DxC" userLabel="BasementView" customClass="BasementViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vHr-s6-WRo"/>
                         <viewControllerLayoutGuide type="bottom" id="S7o-kV-R62"/>
@@ -810,7 +810,7 @@
         <!--PatioView-->
         <scene sceneID="bq7-T4-Dge">
             <objects>
-                <viewController storyboardIdentifier="patioView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YXc-0W-ahQ" userLabel="PatioView" customClass="ViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="patioView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YXc-0W-ahQ" userLabel="PatioView" customClass="RoomViewController" customModule="serverfarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xbQ-Il-0mY"/>
                         <viewControllerLayoutGuide type="bottom" id="Scy-Lk-aWH"/>
@@ -995,7 +995,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vZ-tg-k4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-407" y="-357"/>
+            <point key="canvasLocation" x="-443" y="-335"/>
         </scene>
     </scenes>
     <resources>

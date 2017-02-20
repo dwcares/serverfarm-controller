@@ -12,9 +12,10 @@
 		F13745401E4A95C5006EA35F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F137453E1E4A95C5006EA35F /* Main.storyboard */; };
 		F13745451E4A95C5006EA35F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13745431E4A95C5006EA35F /* LaunchScreen.storyboard */; };
 		F137454F1E4A9E02006EA35F /* ServerFarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137454E1E4A9E02006EA35F /* ServerFarmViewController.swift */; };
-		F13745571E4D1689006EA35F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13745561E4D1689006EA35F /* ViewController.swift */; };
+		F13745571E4D1689006EA35F /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13745561E4D1689006EA35F /* RoomViewController.swift */; };
 		F195E7841E5644F60050C287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F195E7831E5644F60050C287 /* Assets.xcassets */; };
 		F1A433E01E5603B200EC5213 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A433DF1E5603B200EC5213 /* ProgressViewController.swift */; };
+		F1F044401E5B7D45008700BE /* BasementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0443F1E5B7D45008700BE /* BasementViewController.swift */; };
 		F1F592731E4D3995002CE0E7 /* ServerFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F592721E4D3995002CE0E7 /* ServerFarm.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,9 +28,10 @@
 		F13745441E4A95C5006EA35F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F13745461E4A95C5006EA35F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F137454E1E4A9E02006EA35F /* ServerFarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerFarmViewController.swift; sourceTree = "<group>"; };
-		F13745561E4D1689006EA35F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F13745561E4D1689006EA35F /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		F195E7831E5644F60050C287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1A433DF1E5603B200EC5213 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		F1F0443F1E5B7D45008700BE /* BasementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasementViewController.swift; sourceTree = "<group>"; };
 		F1F592721E4D3995002CE0E7 /* ServerFarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerFarm.swift; sourceTree = "<group>"; };
 		F5D7789AC4A4A7ABC75DF8C7 /* Pods-serverfarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-serverfarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-serverfarm/Pods-serverfarm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +91,8 @@
 				F195E7831E5644F60050C287 /* Assets.xcassets */,
 				F13745361E4A95C5006EA35F /* AppDelegate.swift */,
 				F1A433DF1E5603B200EC5213 /* ProgressViewController.swift */,
-				F13745561E4D1689006EA35F /* ViewController.swift */,
+				F13745561E4D1689006EA35F /* RoomViewController.swift */,
+				F1F0443F1E5B7D45008700BE /* BasementViewController.swift */,
 				F137454E1E4A9E02006EA35F /* ServerFarmViewController.swift */,
 				F1F592721E4D3995002CE0E7 /* ServerFarm.swift */,
 				F13745461E4A95C5006EA35F /* Info.plist */,
@@ -224,9 +227,10 @@
 			files = (
 				F1F592731E4D3995002CE0E7 /* ServerFarm.swift in Sources */,
 				F13745371E4A95C5006EA35F /* AppDelegate.swift in Sources */,
-				F13745571E4D1689006EA35F /* ViewController.swift in Sources */,
+				F13745571E4D1689006EA35F /* RoomViewController.swift in Sources */,
 				F1A433E01E5603B200EC5213 /* ProgressViewController.swift in Sources */,
 				F137454F1E4A9E02006EA35F /* ServerFarmViewController.swift in Sources */,
+				F1F044401E5B7D45008700BE /* BasementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

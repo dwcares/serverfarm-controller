@@ -78,6 +78,7 @@ class ServerFarm {
             socket.on("connect") { data, ack in
                 completion(true)
             }
+            
         } else {
             completion(true)
         }
