@@ -25,7 +25,7 @@ class ServerFarmViewController:  UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        listenVolumeButton()
+//       listenVolumeButton()
         
          dataSource = self
         
@@ -82,6 +82,8 @@ class ServerFarmViewController:  UIPageViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "outputVolume" {
             print(AVAudioSession.sharedInstance().outputVolume)
+            self.performSegue(withIdentifier: "ProgressView", sender: "")
+
         }
     }
 

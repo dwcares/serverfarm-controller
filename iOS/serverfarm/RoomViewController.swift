@@ -37,6 +37,7 @@ class RoomViewController: UIViewController {
     }
     @IBAction func togglePowerAction(_ sender: UIButton) {
         print("Toggle power")
+        togglePowerIndicator()
         ServerFarm.doCommand(zone: pageZone, sourceCmd: ServerFarm.format.sourceCmd.power, globalCmd: nil)  {
             (success: Bool) in
             if (success) {
@@ -73,7 +74,12 @@ class RoomViewController: UIViewController {
         ServerFarm.doCommand(zone: pageZone, sourceCmd: command, globalCmd: nil)  {
             (success: Bool) in
             if (success) {
-                self.updatePageStatusUI()
+                
+                ServerFarm.setTimeout(0.5, block: { () -> Void in
+                        self.updatePageStatusUI()
+                })
+                
+                
                 
             }
             
@@ -101,6 +107,14 @@ class RoomViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func togglePowerIndicator() {
+        if (self.buttonPower.backgroundColor == UIColor.lightGray) {
+            self.buttonPower.backgroundColor = .green
+        } else {
+            self.buttonPower.backgroundColor = .lightGray
+        }
     }
     
     func updatePageStatusUI() {
@@ -198,5 +212,5 @@ class RoomViewController: UIViewController {
 
     }
     
-      
+   
 }

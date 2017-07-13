@@ -44,7 +44,7 @@ class ServerFarm {
             static var tuner1 = "MK0X7"
             static var tuner2 = "MK0X8"
             static var marantz = "MK0X9"
-            static var xbox = "SS8"
+            static var xbox = "MK0X10"
             
             static var power = "PT"
             static var mute = "MT"
@@ -69,13 +69,19 @@ class ServerFarm {
             static var autoupdate = "ZA"
         }
     }
+    
+    static var ip = "192.168.2.84"
    
-    static let socket = SocketIOClient(socketURL: URL(string: "http://192.168.2.83:3000")!)
+    static var socket: SocketIOClient?
+    
+    static func setTimeout(_ delay:TimeInterval, block:@escaping ()->Void) -> Timer {
+        return Timer.scheduledTimer(timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
+    }
     
     static func checkConnection(completion: @escaping (Bool) -> Void)  {
     
-        if (socket.status != SocketIOClientStatus.connected) {
-            socket.on("connect") { data, ack in
+        if (socket?.status != SocketIOClientStatus.connected) {
+            socket?.on("connect") { data, ack in
                 completion(true)
             }
             
@@ -84,18 +90,33 @@ class ServerFarm {
         }
     }
     static func initServer (completion: @escaping (Bool) -> Void) {
+        var connected = false
+        
+        socket = SocketIOClient(socketURL: URL(string: "http://\(ip):3000")!)
+
         print("Connecting...")
-        socket.on("connect") {data, ack in
+        socket?.on("connect") {data, ack in
             print("Connected")
+            connected = true
             completion(true)
 
         }
         
-        socket.on("disconnect") { data, ack in
+        socket?.on("disconnect") { data, ack in
             print("Disconnected")
+            connected = false
+        }
+
+        
+        _ = setTimeout(15) {
+            if (!connected) {
+                completion(false)
+            }
         }
         
-        socket.connect()
+        socket?.connect()
+        
+   
 
     }
     
@@ -105,11 +126,12 @@ class ServerFarm {
         queryString = queryString + String(index) + self.format.sourceQuery.status
         queryString = queryString + "+"
         print(queryString)
-        socket.emit("tx", queryString)
+        socket?.emit("tx", queryString)
     
-        socket.on("rx") {data, ack in
+        socket?.on("rx") {data, ack in
             let result = data[0] as! String
-            socket.off("rx")
+            socket?.off("rx")
+            print(result)
 
             completion(ZoneStatus(pattern: result))
         }
@@ -120,7 +142,7 @@ class ServerFarm {
         queryString = queryString + String(zone!) + sourceQuery!
         queryString = queryString + "+"
         print(queryString)
-        socket.emit("tx", queryString)
+        socket?.emit("tx", queryString)
     
     }
     
@@ -137,11 +159,11 @@ class ServerFarm {
         
         commandString = commandString + "+"
         print(commandString)
-        socket.emit("tx", commandString)
+        socket?.emit("tx", commandString)
         
-        socket.on("rx") {data, ack in
+        socket?.on("rx") {data, ack in
             let result = data[0] as! String
-            socket.off("rx")
+            socket?.off("rx")
             
             let status = (result.contains("OK"))
             completion(status)
@@ -229,6 +251,8 @@ extension String {
             return nil
         }
     }
+    
+
 
     func capturedGroups(withRegex pattern: String) -> [String] {
         var results = [String]()
