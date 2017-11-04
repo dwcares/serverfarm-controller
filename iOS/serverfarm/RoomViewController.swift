@@ -169,7 +169,7 @@ class RoomViewController: UIViewController {
             zone = ServerFarm.format.zone.familyroom
             break
         case "diningRoomView":
-            zone = ServerFarm.format.zone.dining
+            zone = ServerFarm.format.zone.living
             break
         case "upstairsBathView":
             zone = ServerFarm.format.zone.bathup

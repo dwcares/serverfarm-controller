@@ -33,30 +33,13 @@ class BasementViewController: RoomViewController {
     }
     @IBAction override func togglePowerAction(_ sender: UIButton) {
         print("Toggle power")
-        togglePowerIndicator()
         
-        isZoneOn()  {
-            (power: Bool) in
-            
-            ServerFarm.doCommand(zone: self.pageZone, sourceCmd: ServerFarm.format.sourceCmd.bluray, globalCmd: nil)  {
-                (success: Bool) in
-                if (success) {
-            
-                    if (power) {
-
-                        ServerFarm.doCommand(zone: self.pageZone, sourceCmd: ServerFarm.format.sourceCmd.power, globalCmd: nil)  {
-                            (success: Bool) in
-                            if (success) {
-                                self.updatePageStatusUI()
-                                
-                            }
-                        }
-                    } else {
-                        self.updatePageStatusUI()
-                    }
-                } else {
+        ServerFarm.doCommand(zone: self.pageZone, sourceCmd: ServerFarm.format.sourceCmd.bluray, globalCmd: nil)  {
+            (success: Bool) in
+            if (success) {
+                ServerFarm.setTimeout(0.5, block: { () -> Void in
                     self.updatePageStatusUI()
-                }
+                })
             }
         }
         

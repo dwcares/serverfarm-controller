@@ -15,6 +15,7 @@
 		F13745571E4D1689006EA35F /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13745561E4D1689006EA35F /* RoomViewController.swift */; };
 		F195E7841E5644F60050C287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F195E7831E5644F60050C287 /* Assets.xcassets */; };
 		F1A433E01E5603B200EC5213 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A433DF1E5603B200EC5213 /* ProgressViewController.swift */; };
+		F1CFCA091FADF99F0011EC59 /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CFCA0A1FADF99F0011EC59 /* SocketIO.framework */; };
 		F1F044401E5B7D45008700BE /* BasementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F0443F1E5B7D45008700BE /* BasementViewController.swift */; };
 		F1F592731E4D3995002CE0E7 /* ServerFarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F592721E4D3995002CE0E7 /* ServerFarm.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		F13745561E4D1689006EA35F /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		F195E7831E5644F60050C287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1A433DF1E5603B200EC5213 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		F1CFCA0A1FADF99F0011EC59 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F0443F1E5B7D45008700BE /* BasementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasementViewController.swift; sourceTree = "<group>"; };
 		F1F592721E4D3995002CE0E7 /* ServerFarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerFarm.swift; sourceTree = "<group>"; };
 		F5D7789AC4A4A7ABC75DF8C7 /* Pods-serverfarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-serverfarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-serverfarm/Pods-serverfarm.release.xcconfig"; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1CFCA091FADF99F0011EC59 /* SocketIO.framework in Frameworks */,
 				29297AE84767C80751CAFFDC /* Pods_serverfarm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +63,7 @@
 		7143CF5E98A4AF108394A1B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1CFCA0A1FADF99F0011EC59 /* SocketIO.framework */,
 				EDFC76399C010919F230EE1D /* Pods_serverfarm.framework */,
 			);
 			name = Frameworks;
