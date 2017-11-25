@@ -1,0 +1,6 @@
+framework module KWStepper {
+  umbrella header "KWStepper-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,28 +9,23 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
+import KWStepper
+
 
 class BasementViewController: RoomViewController {
     
 //MARK: Properties
     
-    @IBAction override func volumeStepperChanged(_ sender: UIStepper) {
-        print("StepperChange:  :\(sender.value)")
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
 
-        if (sender.value == 0) {
-            print("down")
-            ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mvolumedown)  {
-                _ in
-                
-            }
-        } else {
-            print("up")
-            ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mvolumeup)  {
-                _ in
-            }
-        }
-        sender.value = 1; // reset
+        self.stepperView.layer.opacity = 1
+        self.switchMute.layer.opacity = 1
+        self.labelMute.layer.opacity = 1
+        
     }
+
     @IBAction override func togglePowerAction(_ sender: UIButton) {
         print("Toggle power")
         
@@ -97,6 +92,37 @@ class BasementViewController: RoomViewController {
         }
         
     }
+    
+    override func initStepper() {
+        
+        super.initStepper()
+        
+        stepper.autoRepeatInterval = 0.5
+        stepper.wraps = true
+        stepper.minimumValue = 0
+        stepper.maximumValue = 10
+        stepper.value = 0
+        stepper.incrementStepValue = 1
+        stepper.decrementStepValue = 1
+        
+        stepper.decrementCallback = { stepper in
+            print("down")
+            ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mvolumedown)  {
+                _ in
+
+            }
+        }
+        
+        stepper.incrementCallback = { stepper in
+            print("up")
+            ServerFarm.doCommand(zone: self.pageZone, sourceCmd: nil, globalCmd: ServerFarm.format.globalCmd.mvolumeup)  {
+                _ in
+            }
+        }
+        
+        stepper.valueChangedCallback = nil
+    }
+
     
     /////////////
     

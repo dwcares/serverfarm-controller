@@ -1,12 +1,15 @@
 PODS:
+  - KWStepper (2.2.1)
   - Socket.IO-Client-Swift (8.2.0)
 
 DEPENDENCIES:
+  - KWStepper
   - Socket.IO-Client-Swift (~> 8.2.0)
 
 SPEC CHECKSUMS:
+  KWStepper: ac171bf2460d50db4723bcef8797972b1b5830db
   Socket.IO-Client-Swift: 900cf511777045c80d1ce1f11f71261e87765dd1
 
-PODFILE CHECKSUM: 7de5108b4e696042e7824e3357dc6fd35519db26
+PODFILE CHECKSUM: f53ec2e042cbbcbf94b7f554b295cccf38b8769c
 
 COCOAPODS: 1.2.0
