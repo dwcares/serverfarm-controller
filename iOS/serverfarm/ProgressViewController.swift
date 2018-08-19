@@ -13,6 +13,8 @@ class ProgressViewController: UIViewController {
     
     @IBOutlet weak var connectIndicator: UIActivityIndicatorView!
     @IBOutlet weak var serverAddressField: UITextField!
+    
+    var keyboardShowing:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,21 +22,34 @@ class ProgressViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ProgressViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         addDoneButtonOnKeyboard()
-        doInitServer()
+        doInitServer(serverAddress: loadServerDefault())
         
     }
     
-    func doInitServer(serverAddress: String? = nil) {
+    func loadServerDefault() -> String? {
+        let serverAddress: String? = UserDefaults.standard.string(forKey: "serverAddress")
+        return serverAddress
+    }
+    
+    func saveServerDefault(serverAddress: String? = nil) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(serverAddress, forKey: "serverAddress")
+        userDefaults.synchronize()
+    }
+    
+    func doInitServer(timeout: Double = 15, serverAddress: String? = nil) {
         
         if (serverAddress != nil ) {
             ServerFarm.ip = serverAddress!
         }
 
-        ServerFarm.initServer() {
+        ServerFarm.initServer(timeout: timeout) {
             (result: Bool) in
             
             if (result) {
                 print("Logged in!")
+
+                self.saveServerDefault(serverAddress: ServerFarm.ip)
                 self.performSegue(withIdentifier: "ServerFarmView", sender: "")
             } else {
                 print("connection failed")
@@ -68,24 +83,25 @@ class ProgressViewController: UIViewController {
     func doneButtonAction() {
         self.serverAddressField.resignFirstResponder()
         
-        doInitServer(serverAddress: self.serverAddressField.text!)
+        doInitServer(timeout: 5, serverAddress: self.serverAddressField.text!)
         
     }
     
 
     func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if !keyboardShowing {
+                keyboardShowing = true
                 self.view.frame.origin.y -= keyboardSize.height
+                print(keyboardSize.height)
             }
         }
     }
 
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
+        if keyboardShowing {
+            keyboardShowing = false
+            self.view.frame.origin.y = 0
         }
     }
 

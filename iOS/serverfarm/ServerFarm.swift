@@ -89,7 +89,7 @@ class ServerFarm {
             completion(true)
         }
     }
-    static func initServer (completion: @escaping (Bool) -> Void) {
+    static func initServer (timeout: Double = 15, completion: @escaping (Bool) -> Void) {
         var connected = false
         
         socket = SocketIOClient(socketURL: URL(string: "http://\(ip):3000")!)
@@ -108,7 +108,7 @@ class ServerFarm {
         }
 
         
-        _ = setTimeout(15) {
+        _ = setTimeout(timeout) {
             if (!connected) {
                 completion(false)
             }
