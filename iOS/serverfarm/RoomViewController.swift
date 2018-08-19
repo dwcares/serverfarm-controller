@@ -29,6 +29,10 @@ class RoomViewController: UIViewController {
     @IBOutlet weak var stepperDown: UIButton!
     @IBOutlet weak var stepperUp: UIButton!
 
+    @IBAction func refreshAction(sender: UIButton) {
+        self.updatePageStatusUI()
+    }
+    
     @IBAction func togglePowerAction(_ sender: UIButton) {
         print("Toggle power")
         togglePowerIndicator()
@@ -36,7 +40,6 @@ class RoomViewController: UIViewController {
             (success: Bool) in
             if (success) {
                 self.updatePageStatusUI()
-                
             }
         }
     }
@@ -91,13 +94,10 @@ class RoomViewController: UIViewController {
         
         pageZone = getCurrentPageZone()
         
-        self.updatePageStatusUI()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updatePageStatusUI()
     }
 
     override func didReceiveMemoryWarning() {

@@ -70,7 +70,7 @@ class ServerFarm {
         }
     }
     
-    static var ip = "192.168.2.84"
+    static var ip = "192.168.2.7"
    
     static var socket: SocketIOClient?
     
@@ -115,8 +115,6 @@ class ServerFarm {
         }
         
         socket?.connect()
-        
-   
 
     }
     
