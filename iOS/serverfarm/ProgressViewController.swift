@@ -40,7 +40,7 @@ class ProgressViewController: UIViewController {
     func doInitServer(timeout: Double = 15, serverAddress: String? = nil) {
         
         if (serverAddress != nil ) {
-            ServerFarm.ip = serverAddress!
+            ServerFarm.updateIP(newIp: serverAddress!)
         }
 
         ServerFarm.initServer(timeout: timeout) {
@@ -80,7 +80,7 @@ class ProgressViewController: UIViewController {
         self.serverAddressField.inputAccessoryView = doneToolbar
     }
     
-    func doneButtonAction() {
+    @objc func doneButtonAction() {
         self.serverAddressField.resignFirstResponder()
         
         doInitServer(timeout: 5, serverAddress: self.serverAddressField.text!)
@@ -88,7 +88,7 @@ class ProgressViewController: UIViewController {
     }
     
 
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if !keyboardShowing {
                 keyboardShowing = true
@@ -98,7 +98,7 @@ class ProgressViewController: UIViewController {
         }
     }
 
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         if keyboardShowing {
             keyboardShowing = false
             self.view.frame.origin.y = 0

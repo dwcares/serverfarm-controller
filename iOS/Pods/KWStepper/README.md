@@ -45,7 +45,7 @@ github "kyleweiner/KWStepper"
 
 ### Manually
 
-If you prefer not to use a dependency manager, simply copy the `Source/KWStepper.swift` file into your project.
+If you prefer not to use a dependency manager, simply copy the [source files](https://github.com/kyleweiner/KWStepper/tree/master/Source) into your project.
 
 ## Usage
 
@@ -67,14 +67,14 @@ Respond to control events using the `valueChangedCallback` property.
 
 ```swift
 stepper.valueChangedCallback = { stepper in
-	self.countLabel.text = String(stepper.value)
+    self.countLabel.text = String(stepper.value)
 }
 ```
 
 Or, use the target-action pattern.
 
 ```swift
-stepper.addTarget(self, action: "stepperDidChange", forControlEvents: .ValueChanged)
+stepper.addTarget(self, action: #selector(stepperDidChange), for: .valueChanged)
 ```
 
 ### Configuring KWStepper
@@ -114,6 +114,7 @@ Adopting `KWStepperDelegate` provides the following optional delegate methods fo
 * `optional func KWStepperDidIncrement()`
 * `optional func KWStepperMaxValueClamped()`
 * `optional func KWStepperMinValueClamped()`
+* `optional func KWStepperDidEndLongPress()`
 
 ### Callbacks
 
@@ -124,6 +125,7 @@ KWStepper provides the following callbacks:
 * `incrementCallback`
 * `maxValueClampedCallback`
 * `minValueClampedCallback`
+* `longPressEndedCallback`
 
 Method chaining is supported for callbacks too:
 
@@ -134,6 +136,7 @@ stepper
     .didIncrement { _ in }
     .maxValueClamped { _ in }
     .minValueClamped { _ in }
+    .longPressEnded { _ in }
 
 // `maxValueClampedCallback` and `minValueClampedCallback` may be set simultaneously.
 stepper.valueClamped { stepper in

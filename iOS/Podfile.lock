@@ -1,15 +1,24 @@
 PODS:
-  - KWStepper (2.2.1)
-  - Socket.IO-Client-Swift (8.2.0)
+  - KWStepper (2.5.1)
+  - Socket.IO-Client-Swift (15.1.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.0)
 
 DEPENDENCIES:
   - KWStepper
-  - Socket.IO-Client-Swift (~> 8.2.0)
+  - Socket.IO-Client-Swift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KWStepper
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
-  KWStepper: ac171bf2460d50db4723bcef8797972b1b5830db
-  Socket.IO-Client-Swift: 900cf511777045c80d1ce1f11f71261e87765dd1
+  KWStepper: c33509222ffcce5607cb943a074625cdd80931ab
+  Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
 
-PODFILE CHECKSUM: f53ec2e042cbbcbf94b7f554b295cccf38b8769c
+PODFILE CHECKSUM: 955a60310d46f9c687f8d3fbc6c2f39d32c3f95d
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.2
