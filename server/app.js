@@ -21,11 +21,10 @@ var portName = process.argv[2] ? process.argv[2] : 'com4';
 // print out the port you're listening on:
 console.log("opening serial port: " + portName);	
 var myPort = new SerialPort(portName, { 
-	baudRate: 9600,
-
-	// look for return and newline at the end of each data packet:
-	parser: SerialPort.parsers.raw
+	baudRate: 9600
 });
+
+const parser = myPort.pipe(new ReadlineParser()) 
 
 io.on('connection', function(socket) {
     console.log('user is connected')
@@ -37,10 +36,15 @@ io.on('connection', function(socket) {
         }); 
     });
 
-    myPort.on('data', function(rx) {
-            console.log('rx: '+ rx);
-            socket.emit('rx', "" + rx);
-    });    
+    parser.on('data',  function(rx) {
+        console.log('rx: '+ rx);
+        socket.emit('rx', "" + rx);
+    });  
+
+    // myPort.on('data', function(rx) {
+    //         console.log('rx: '+ rx);
+    //         socket.emit('rx', "" + rx);
+    // });    
 });
 
 app.get('/', function(req, res) {
