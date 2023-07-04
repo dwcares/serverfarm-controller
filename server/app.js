@@ -5,27 +5,19 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
-var serialport = require("serialport");	
-var SerialPort = serialport.SerialPort;
+const SerialPort = require('serialport')
+const Readline = require('@serialport/parser-readline')
 
-SerialPort.list(function (err, ports) {
-  ports.forEach(function(port) {
-    console.log(port.comName);
-    console.log(port.pnpId);
-    console.log(port.manufacturer);
-  });
-});
-
-var portName = process.argv[2] ? process.argv[2] : 'com4';	
-
-// print out the port you're listening on:
+var portName = process.argv[2] ? process.argv[2] : '/dev/ttyUSB0';	
+console.log("***** Server Farm Controller  *****")
 console.log("opening serial port: " + portName);	
-var myPort = new SerialPort(portName, { 
-	baudRate: 9600,
 
-	// look for return and newline at the end of each data packet:
-	parser: SerialPort.parsers.raw
+var myPort = new SerialPort(portName,{ 
+	baudRate: 9600
 });
+
+const parser = myPort.pipe(new Readline({ delimiter: '\r' }))
+parser.on('data',  console.log)
 
 io.on('connection', function(socket) {
     console.log('user is connected')
@@ -37,11 +29,33 @@ io.on('connection', function(socket) {
         }); 
     });
 
-    myPort.on('data', function(rx) {
+    parser.on('data', function(rx) {
             console.log('rx: '+ rx);
             socket.emit('rx', "" + rx);
     });    
 });
+
+
+async function printPorts() {
+  console.log()
+  console.log("***** Serial Ports *****")
+
+  let ports = await SerialPort.list()
+
+  ports.forEach(function(port) {
+    console.log()
+    if (port.path) console.log(port.path);
+    if (port.manufacturer) console.log(" > Manufacturer: " + port.manufacturer)
+    if (port.pnpId) console.log(" > PnP ID: " + port.pnpId);
+  
+  });
+  
+  console.log("************************")
+  console.log()
+}
+
+printPorts()
+
 
 app.get('/', function(req, res) {
  res.sendFile(__dirname + '/public/index.html');
